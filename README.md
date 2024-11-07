@@ -15,20 +15,20 @@ https://www.nuget.org/packages/WMBlazorSlickCarousel/
 
 First, import the namespaces in `_Imports.razor`
 
-```
+```razor
 @using WMBlazorSlickCarousel.WMBSC
 ```
 
 Then, inside your main `Startup`/`Program`, call `AddWMBSC`.
 
-```
+```cs
 builder.Services.AddWMBSC();
 ```
 
 Optionally, you can pass a Boolean value as a parameter to indicate to the component whether it should install Jquery or not. By default, it is true.
 
 The following example wont install the Jquery.
-```
+```cs
 builder.Services.AddWMBSC(false);
 ```
 
@@ -36,7 +36,7 @@ builder.Services.AddWMBSC(false);
 ## The component structre
 
 The `BlazorSlickCarousel` has the following structure:
-```
+```razor
 <BlazorSlickCarousel>
     <BlazorSlickCarouselContent>
         your items here
@@ -57,7 +57,7 @@ Optionally you can use the `BlazorSlickCarouselLoading` to customize your loadin
 ## A simple usage
 
 Example with images slides:
-```
+```razor
 <BlazorSlickCarousel>
     <BlazorSlickCarouselContent>
         <img src="https://loremflickr.com/400/400?random=14" alt="">
@@ -76,7 +76,7 @@ Example with images slides:
 ```
 
 Example with html content slides:
-```
+```razor
 <BlazorSlickCarousel>
     <BlazorSlickCarouselContent>
         <div>
@@ -105,7 +105,7 @@ To custom settings of your carousel there is the `WMBSCInitialSettings` object, 
 
 ### Default values
 
-```
+```cs
 public class WMBSCInitialSettings: WMBSCSettings
 {
     public IEnumerable<WMBSCResponsiveSettings> responsive { get; set; } = null;
@@ -114,7 +114,7 @@ public class WMBSCInitialSettings: WMBSCSettings
 
 The `WMBSCInitialSettings` inherits most of its properties from `WMBSCSettings`.
 
-```
+```cs
 public class WMBSCSettings 
 {
     public bool accessibility { get; set; } = true;
@@ -167,7 +167,7 @@ public class WMBSCSettings
 
 The `WMBSCResponsiveSettings` object is responsible for responsivity of the component.
 
-```
+```cs
 public class WMBSCResponsiveSettings
 {
     public int breakpoint { get; set; }
@@ -180,7 +180,7 @@ public class WMBSCResponsiveSettings
 
 First, you have to get a reference of the `BlazorSlickCarousel`.
 
-```
+```razor
 <BlazorSlickCarousel @ref="theCarousel">
     <BlazorSlickCarouselContent>...</BlazorSlickCarouselContent>
     <BlazorSlickCarouselLoading>...</BlazorSlickCarouselLoading>
@@ -193,7 +193,7 @@ First, you have to get a reference of the `BlazorSlickCarousel`.
 
 Then, instanciate the `WMBSCInitialSettings` object with your customizations and pass it as parameter to the `BlazorSlickCarousel`.
 
-```
+```razor
 <BlazorSlickCarousel @ref="theCarousel" Configurations="configurations">
     <BlazorSlickCarouselContent>...</BlazorSlickCarouselContent>
     <BlazorSlickCarouselLoading>...</BlazorSlickCarouselLoading>
@@ -224,7 +224,7 @@ The `BlazorSlickCarousel` is responsive!
 For set the responsivity, you can use the `WMBSCSettings` object and the `WMBSCResponsiveSettings`.
 
 Example:
-```
+```razor
 <BlazorSlickCarousel @ref="theCarousel" Configurations="configurations" >
     <BlazorSlickCarouselContent>
         <img src="https://loremflickr.com/400/400?random=47" alt="">
@@ -296,7 +296,7 @@ Finally, you just have to set this list as value to the property `responsive` of
 The `BlazorSlickCarousel` has support to lazy loading your carousel images! 
 
 Example:
-```
+```razor
 <BlazorSlickCarousel @ref="theCarousel" Configurations="configurations" >
     <BlazorSlickCarouselContent>
         <div>
@@ -367,7 +367,7 @@ Then, create static methods with `[JSInvokable]` attribute and pass them to the 
 
 Example:
 
-```
+```razor
 <BlazorSlickCarousel 
     @ref="theCarousel"
     Configurations="configurations" 
@@ -523,7 +523,7 @@ First, you have to get a reference of the `BlazorSlickCarousel`.
 Then, you call the desired methods.
 
 Example:
-```
+```razor
 <BlazorSlickCarousel @ref="theCarousel" Configurations="configurations" >
     <BlazorSlickCarouselContent>
         <img src="https://loremflickr.com/400/400?random=38" alt="">
